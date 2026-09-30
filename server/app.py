@@ -11,25 +11,25 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 SPIDER_API_KEY = os.getenv("SPIDER_API_KEY", "")
 
 def obter_modelo_groq():
-    headers = {'Authorization': f'Bearer {GROQ_API_KEY}'}
-        preferencias = [
-                "llama-3.3-70b-versatile",
-                        "llama-3.1-8b-instant",
-                                "openai/gpt-oss-120b",
-                                        "qwen/qwen3.8-27b"
-                                            ]
-                                                try:
-                                                        res = requests.get('https://api.groq.com/openai/v1/models', headers=headers, timeout=10)
-                                                                if res.status_code == 200:
-                                                                            disponiveis = [m['id'] for m in res.json().get('data', [])]
-                                                                                        for pref in preferencias:
-                                                                                                        if pref in disponiveis:
-                                                                                                                            return pref
-                                                                                                                                        if disponiveis:
-                                                                                                                                                        return disponiveis[0]
-                                                                                                                                                            except Exception as e:
-                                                                                                                                                                    print(f"[*] Erro ao buscar modelos Groq: {e}")
-                                                                                                                                                                        return "llama-3.1-8b-instant"
+            headers = {'Authorization': f'Bearer {GROQ_API_KEY}'}
+                preferencias = [
+                        "llama-3.3-70b-versatile",
+                                "llama-3.1-8b-instant",
+                                        "openai/gpt-oss-120b",
+                                                "qwen/qwen3.8-27b"
+                                                    ]
+                                                        try:
+                                                                res = requests.get('https://api.groq.com/openai/v1/models', headers=headers, timeout=10)
+                                                                        if res.status_code == 200:
+                                                                                    disponiveis = [m['id'] for m in res.json().get('data', [])]
+                                                                                                for pref in preferencias:
+                                                                                                                if pref in disponiveis:
+                                                                                                                                    return pref
+                                                                                                                                                if disponiveis:
+                                                                                                                                                                return disponiveis[0]
+                                                                                                                                                                    except Exception as e:
+                                                                                                                                                                            print(f"[*] Erro ao buscar modelos Groq: {e}")
+                                                                                                                                                                                return "llama-3.1-8b-instant"
 
                                                                                                                                                                         MODELO_ATIVO = obter_modelo_groq()
 
