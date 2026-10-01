@@ -13,10 +13,10 @@ def obter_modelo_groq():
     headers = {'Authorization': f'Bearer {GROQ_API_KEY}'}
         preferencias = [
                 "llama-3.3-70b-versatile",
-                        "llama-3.1-8b-instant",
-                                "openai/gpt-oss-120b",
-                                        "qwen/qwen3.8-27b"
-                                            ]
+                "llama-3.1-8b-instant",
+                "openai/gpt-oss-120b",
+                "qwen/qwen3.8-27b"
+  ]
                                                 try:
                                                         res = requests.get('https://api.groq.com/openai/v1/models', headers=headers, timeout=10)
                                                                 if res.status_code == 200:
@@ -59,4 +59,3 @@ def obter_modelo_groq():
 
                                                                                                                                                                                                                                                                                                                                 if __name__ == '__main__':
                                                                                                                                                                                                                                                                                                                                     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
-                                                                                                                                                                                                                                                                                                                                    
